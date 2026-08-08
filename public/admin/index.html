@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>CMS · Less Carbon, more notions</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <style>
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        background: #f7f8f9;
+        font-family: system-ui, sans-serif;
+      }
+      .hint {
+        max-width: 40rem;
+        margin: 2rem auto;
+        padding: 1.25rem 1.5rem;
+        border-radius: 1rem;
+        background: #eef1f4;
+        color: #1c242c;
+        line-height: 1.5;
+        font-size: 0.95rem;
+      }
+      .hint code {
+        background: #fff;
+        padding: 0.1rem 0.35rem;
+        border-radius: 0.35rem;
+        font-size: 0.85em;
+      }
+      .hint a {
+        color: #3d6fbf;
+      }
+    </style>
+  </head>
+  <body>
+    <noscript>
+      <div class="hint">
+        Enable JavaScript to use the CMS. The public site is hosted on
+        <strong>GitHub Pages</strong> only (no Cloudflare).
+      </div>
+    </noscript>
+    <!--
+      Content management is GitHub-native:
+      - Site host: GitHub Pages
+      - Content store: this GitHub repo (Markdown + settings JSON)
+      - Local CMS: npx decap-server + npm run dev → /admin/
+      Pushing to redesign/main triggers Actions → redeploy Pages.
+    -->
+    <script src="https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js" type="module"></script>
+  </body>
+</html>

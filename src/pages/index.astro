@@ -1,0 +1,58 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/home/Hero.astro';
+import FeaturedPosts from '../components/home/FeaturedPosts.astro';
+import { getEntry } from 'astro:content';
+
+const settings = await getEntry('site', 'settings');
+---
+
+<BaseLayout
+  title={undefined}
+  description={settings?.data.description}
+  image="/media/brand/og-default.jpg"
+>
+  <Hero />
+
+  <section class="site-container">
+    <div class="card grid gap-6 p-6 md:grid-cols-[1fr_auto] md:items-center md:p-8">
+      <div>
+        <h2 class="font-display text-2xl font-semibold text-ink">A garden of soft science</h2>
+        <p class="mt-2 max-w-2xl text-muted">
+          Essays on refill culture, mindful living, favourite books, and the small practices that
+          lighten our carbon and deepen our notions. Filter by tag, search the archive, or wander
+          wherever the butterflies lead.
+        </p>
+      </div>
+      <div class="flex flex-wrap gap-2">
+        <a class="tag-pill" href="/blog/tags/sustainability/">Sustainability</a>
+        <a class="tag-pill" href="/blog/tags/mindfulness/">Mindfulness</a>
+        <a class="tag-pill" href="/blog/tags/books/">Books</a>
+        <a class="tag-pill" href="/blog/tags/lifestyle/">Lifestyle</a>
+      </div>
+    </div>
+  </section>
+
+  <FeaturedPosts />
+
+  <section class="site-container pb-16">
+    <div class="relative overflow-hidden rounded-[2rem] border border-beluga-200 bg-gradient-to-br from-hydrangea-200/50 via-white to-cornflower-300/30 p-8 md:p-12">
+      <div class="relative z-10 max-w-xl">
+        <h2 class="font-display text-3xl font-semibold text-ink">Probably frolicking somewhere</h2>
+        <p class="mt-3 text-muted">
+          Written by {settings?.data.author}. Love a rock pun. Find more about the person behind
+          the beluga energy on the about page.
+        </p>
+        <a href="/about/" class="btn-primary mt-6">About the author</a>
+      </div>
+      <img
+        src="/media/brand/avatar-beluga.jpg"
+        alt="Illustrated beluga whale avatar"
+        class="animate-float-slow pointer-events-none absolute -right-4 -bottom-6 h-40 w-40 rounded-full object-cover opacity-90 shadow-xl ring-4 ring-white/70 md:right-8 md:bottom-8 md:h-48 md:w-48"
+        width="192"
+        height="192"
+        loading="lazy"
+      />
+    </div>
+  </section>
+</BaseLayout>

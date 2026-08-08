@@ -1,0 +1,74 @@
+# Sveltia CMS — GitHub-only (no Cloudflare / no external OAuth host)
+#
+# Hosting: the public site is GitHub Pages.
+# Editing: use local CMS (recommended) so commits stay in this GitHub repo
+# and GitHub Actions redeploys Pages automatically.
+#
+backend:
+  name: github
+  repo: lesscarbon-morenotions/lesscarbon-morenotions.github.io
+  branch: redesign
+  # No base_url — we do not use Cloudflare Workers or any third-party OAuth proxy.
+  # Production browser login with GitHub requires an OAuth bridge; for a pure
+  # GitHub Pages handoff we use local_backend (below) instead.
+
+# Primary handoff path: run the site locally + a local Git proxy, then push.
+#   Terminal 1: npx decap-server
+#   Terminal 2: npm run dev
+#   Browser:    http://localhost:4321/admin/
+local_backend: true
+
+media_folder: public/media/uploads
+public_folder: /media/uploads
+
+site_url: https://lesscarbon-morenotions.github.io
+display_url: https://lesscarbon-morenotions.github.io
+logo_url: /favicon.svg
+
+collections:
+  - name: posts
+    label: Blog posts
+    label_singular: Post
+    folder: src/content/posts
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    extension: md
+    format: yaml-frontmatter
+    fields:
+      - { name: title, label: Title, widget: string }
+      - { name: description, label: Description, widget: text }
+      - { name: pubDate, label: Publish date, widget: datetime, date_format: YYYY-MM-DD, time_format: false }
+      - { name: updatedDate, label: Updated date, widget: datetime, required: false, date_format: YYYY-MM-DD, time_format: false }
+      - name: tags
+        label: Tags
+        widget: list
+        allow_add: true
+        field: { name: tag, label: Tag, widget: string }
+      - { name: cover, label: Cover image path, widget: string, required: false, hint: "e.g. /media/covers/my-post.jpg or upload then paste path" }
+      - { name: coverAlt, label: Cover alt text, widget: string, required: false }
+      - { name: featured, label: Featured, widget: boolean, default: false }
+      - { name: draft, label: Draft, widget: boolean, default: false }
+      - { name: body, label: Body, widget: markdown }
+
+  - name: site
+    label: Site settings
+    files:
+      - name: settings
+        label: Settings
+        file: src/content/site/settings.json
+        fields:
+          - { name: title, label: Site title, widget: string }
+          - { name: tagline, label: Tagline, widget: string }
+          - { name: description, label: Description, widget: text }
+          - { name: author, label: Author name, widget: string }
+          - { name: authorBio, label: Author bio, widget: text }
+          - { name: authorNote, label: Author note, widget: string, required: false }
+          - name: social
+            label: Social links
+            widget: object
+            required: false
+            fields:
+              - { name: github, label: GitHub URL, widget: string, required: false }
+              - { name: mastodon, label: Mastodon URL, widget: string, required: false }
+              - { name: instagram, label: Instagram URL, widget: string, required: false }

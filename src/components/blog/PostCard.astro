@@ -1,0 +1,53 @@
+---
+import type { Post } from '../../utils/posts';
+import { formatDate } from '../../utils/dates';
+import { slugifyTag } from '../../utils/tags';
+import { readingTime } from '../../utils/posts';
+
+interface Props {
+  post: Post;
+  priority?: boolean;
+}
+
+const { post, priority = false } = Astro.props;
+const href = `/blog/${post.id}/`;
+const cover = post.data.cover ?? '/media/brand/og-default.jpg';
+const body = post.body ?? '';
+---
+
+<article class="card group flex h-full flex-col" data-tags={post.data.tags.map(slugifyTag).join(',')}>
+  <a href={href} class="block overflow-hidden no-underline">
+    <div class="relative aspect-[16/10] overflow-hidden bg-beluga-100">
+      <img
+        src={cover}
+        alt={post.data.coverAlt ?? `Cover for ${post.data.title}`}
+        class="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
+        loading={priority ? 'eager' : 'lazy'}
+        decoding="async"
+        width="640"
+        height="400"
+      />
+      <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-beluga-900/25 to-transparent"></div>
+    </div>
+  </a>
+  <div class="flex flex-1 flex-col gap-3 p-5">
+    <div class="flex flex-wrap items-center gap-2 text-xs text-muted">
+      <time datetime={post.data.pubDate.toISOString()}>{formatDate(post.data.pubDate)}</time>
+      <span aria-hidden="true">·</span>
+      <span>{readingTime(body)}</span>
+    </div>
+    <h3 class="font-display text-xl font-semibold leading-snug text-ink">
+      <a href={href} class="no-underline hover:text-hydrangea-700">{post.data.title}</a>
+    </h3>
+    <p class="line-clamp-3 text-sm leading-relaxed text-muted">{post.data.description}</p>
+    <div class="mt-auto flex flex-wrap gap-2 pt-2">
+      {
+        post.data.tags.map((tag) => (
+          <a class="tag-pill" href={`/blog/tags/${slugifyTag(tag)}/`}>
+            {tag}
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</article>

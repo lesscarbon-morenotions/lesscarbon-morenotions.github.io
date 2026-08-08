@@ -1,0 +1,205 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+  --font-display: "Fraunces", "Georgia", "Times New Roman", serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  --color-beluga-50: #f7f8f9;
+  --color-beluga-100: #eef1f4;
+  --color-beluga-200: #d9e0e7;
+  --color-beluga-300: #b8c4d0;
+  --color-beluga-500: #6b7a88;
+  --color-beluga-700: #4a5560;
+  --color-beluga-900: #1c242c;
+
+  --color-hydrangea-200: #d4c9ec;
+  --color-hydrangea-300: #b7a6d9;
+  --color-hydrangea-500: #7b6bb5;
+  --color-hydrangea-700: #4f3f86;
+
+  --color-cornflower-300: #9abff0;
+  --color-cornflower-400: #6f9fe8;
+  --color-cornflower-600: #3d6fbf;
+  --color-cornflower-700: #2f5899;
+
+  --color-moss-400: #7a9a6d;
+  --color-moss-700: #3f5a38;
+
+  --color-butterfly-coral: #e07a6a;
+  --color-butterfly-gold: #d4a84b;
+
+  --color-surface: var(--color-beluga-50);
+  --color-ink: var(--color-beluga-900);
+  --color-muted: var(--color-beluga-700);
+  --color-accent: var(--color-cornflower-600);
+  --color-accent-soft: var(--color-hydrangea-300);
+  --color-focus: var(--color-hydrangea-700);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  body {
+    @apply bg-surface text-ink font-sans antialiased;
+    background-image:
+      radial-gradient(ellipse 80% 50% at 10% -10%, color-mix(in oklab, var(--color-hydrangea-300) 28%, transparent), transparent),
+      radial-gradient(ellipse 60% 40% at 100% 0%, color-mix(in oklab, var(--color-cornflower-400) 18%, transparent), transparent),
+      radial-gradient(ellipse 50% 30% at 50% 100%, color-mix(in oklab, var(--color-moss-400) 10%, transparent), transparent);
+    background-attachment: fixed;
+    min-height: 100vh;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--color-hydrangea-300) 55%, white);
+    color: var(--color-beluga-900);
+  }
+
+  a {
+    @apply text-accent underline-offset-4 transition-colors;
+  }
+
+  a:hover {
+    @apply text-hydrangea-700;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  .skip-link {
+    @apply sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:rounded-lg focus:bg-white focus:px-4 focus:py-2 focus:shadow-lg focus:text-ink;
+  }
+
+  .site-container {
+    @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-cornflower-600 px-5 py-2.5 text-sm font-semibold text-white no-underline shadow-sm transition hover:bg-cornflower-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hydrangea-700;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-beluga-200 bg-white/70 px-5 py-2.5 text-sm font-semibold text-ink no-underline backdrop-blur transition hover:border-hydrangea-300 hover:bg-white;
+  }
+
+  .tag-pill {
+    @apply inline-flex items-center rounded-full bg-hydrangea-200/80 px-3 py-1 text-xs font-semibold tracking-wide text-hydrangea-700 no-underline transition hover:bg-hydrangea-300;
+  }
+
+  .card {
+    @apply overflow-hidden rounded-3xl border border-beluga-200/80 bg-white/75 shadow-[0_12px_40px_-24px_rgba(28,36,44,0.45)] backdrop-blur-sm transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_20px_50px_-24px_rgba(79,63,134,0.35)];
+  }
+
+  .prose-nature {
+    @apply max-w-none text-beluga-700 leading-relaxed;
+  }
+
+  .prose-nature h2 {
+    @apply mt-10 mb-4 font-display text-2xl font-semibold text-ink;
+  }
+
+  .prose-nature h3 {
+    @apply mt-8 mb-3 font-display text-xl font-semibold text-ink;
+  }
+
+  .prose-nature p {
+    @apply my-4;
+  }
+
+  .prose-nature a {
+    @apply text-cornflower-600 underline decoration-cornflower-300 underline-offset-3 hover:text-hydrangea-700;
+  }
+
+  .prose-nature ul {
+    @apply my-4 list-disc space-y-2 pl-6;
+  }
+
+  .prose-nature ol {
+    @apply my-4 list-decimal space-y-2 pl-6;
+  }
+
+  .prose-nature blockquote {
+    @apply my-6 border-l-4 border-hydrangea-300 pl-4 italic text-beluga-700;
+  }
+
+  .prose-nature strong {
+    @apply font-semibold text-ink;
+  }
+}
+
+/* Ambient nature motion */
+@keyframes float-drift {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(-2deg); }
+  50% { transform: translate3d(12px, -18px, 0) rotate(4deg); }
+}
+
+@keyframes float-soft {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes wing-flutter {
+  0%, 100% { transform: scaleX(1); }
+  50% { transform: scaleX(0.86); }
+}
+
+@keyframes shimmer-wave {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+.animate-float {
+  animation: float-drift 9s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: float-soft 7s ease-in-out infinite;
+}
+
+.animate-flutter {
+  transform-origin: center;
+  animation: wing-flutter 1.6s ease-in-out infinite;
+}
+
+.hero-gradient-mesh {
+  background:
+    linear-gradient(120deg,
+      color-mix(in oklab, var(--color-hydrangea-300) 40%, transparent),
+      color-mix(in oklab, var(--color-cornflower-400) 35%, transparent),
+      color-mix(in oklab, var(--color-beluga-100) 60%, transparent));
+  background-size: 200% 200%;
+  animation: shimmer-wave 14s ease infinite alternate;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.35s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-float,
+  .animate-float-slow,
+  .animate-flutter,
+  .hero-gradient-mesh {
+    animation: none !important;
+  }
+}

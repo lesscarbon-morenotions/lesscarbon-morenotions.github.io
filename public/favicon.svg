@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Less Carbon more notions">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#6f9fe8"/>
+      <stop offset="55%" stop-color="#7b6bb5"/>
+      <stop offset="100%" stop-color="#7a9a6d"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="url(#g)"/>
+  <ellipse cx="32" cy="36" rx="16" ry="11" fill="#f7f8f9" opacity="0.95"/>
+  <circle cx="38" cy="33" r="2" fill="#1c242c"/>
+  <path d="M18 24c6-8 16-10 24-4" stroke="#f7f8f9" stroke-width="2.2" fill="none" opacity="0.75"/>
+  <g transform="translate(42 14) scale(0.55)">
+    <ellipse cx="0" cy="0" rx="10" ry="6" fill="#e07a6a" opacity="0.9"/>
+    <ellipse cx="12" cy="0" rx="10" ry="6" fill="#d4a84b" opacity="0.9"/>
+    <circle cx="6" cy="0" r="2" fill="#1c242c"/>
+  </g>
+</svg>

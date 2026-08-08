@@ -1,0 +1,60 @@
+---
+import { Image } from 'astro:assets';
+import heroImg from '../../assets/images/hero-beluga-hydrangea.jpg';
+import NatureScene from './NatureScene.astro';
+---
+
+<section class="relative overflow-hidden">
+  <div class="site-container grid items-center gap-10 py-14 lg:grid-cols-[1.05fr_0.95fr] lg:py-20">
+    <div class="relative z-10">
+      <p class="mb-3 inline-flex items-center gap-2 rounded-full border border-hydrangea-300/60 bg-white/70 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-hydrangea-700">
+        <span class="h-1.5 w-1.5 rounded-full bg-moss-400"></span>
+        Slow exploration · Soft science
+      </p>
+      <h1 class="font-display text-4xl font-semibold leading-[1.1] tracking-tight text-ink sm:text-5xl lg:text-6xl">
+        Less carbon,
+        <span class="block bg-gradient-to-r from-cornflower-600 via-hydrangea-500 to-moss-700 bg-clip-text text-transparent">
+          more notions
+        </span>
+      </h1>
+      <p class="mt-5 max-w-xl text-lg leading-relaxed text-muted">
+        A calm garden of essays on sustainability, mindfulness, books, food, and living lightly —
+        with belugas, butterflies, hydrangeas, and cornflowers for company.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a class="btn-primary" href="/blog/">Read the blog</a>
+        <a class="btn-ghost" href="/about/">Meet the author</a>
+      </div>
+      <ul class="mt-10 flex flex-wrap gap-4 text-sm text-muted">
+        <li class="flex items-center gap-2">
+          <span aria-hidden="true">🦋</span> Nature-led design
+        </li>
+        <li class="flex items-center gap-2">
+          <span aria-hidden="true">🐋</span> Slow thoughts
+        </li>
+        <li class="flex items-center gap-2">
+          <span aria-hidden="true">🌸</span> Eco notions
+        </li>
+      </ul>
+    </div>
+
+    <div class="relative">
+      <div class="hero-gradient-mesh absolute -inset-6 -z-10 rounded-[2.5rem] opacity-70 blur-2xl"></div>
+      <div class="card relative aspect-[4/3] overflow-hidden">
+        <Image
+          src={heroImg}
+          alt="A gentle beluga whale among soft hydrangea blues and floating blooms"
+          class="h-full w-full object-cover"
+          widths={[480, 720, 960]}
+          sizes="(max-width: 768px) 100vw, 520px"
+          loading="eager"
+          fetchpriority="high"
+        />
+        <NatureScene />
+      </div>
+      <p class="mt-3 text-center text-xs text-beluga-500">
+        Beluga soft greys · hydrangea violet · cornflower blue
+      </p>
+    </div>
+  </div>
+</section>
