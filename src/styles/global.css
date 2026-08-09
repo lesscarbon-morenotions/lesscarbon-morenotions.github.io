@@ -128,15 +128,30 @@
   }
 
   .tag-pill {
-    @apply inline-flex items-center rounded-full bg-moss-700/10 px-3 py-1 text-xs font-semibold tracking-wide text-moss-700 no-underline transition hover:bg-moss-700/18;
+    @apply inline-flex items-center rounded-full bg-moss-700/10 px-3 py-1 text-xs font-semibold tracking-wide text-moss-700 no-underline transition hover:bg-moss-700/20;
   }
 
   .card {
-    @apply overflow-hidden rounded-3xl border border-white/70 bg-white/88 shadow-[0_16px_44px_-28px_rgba(28,36,44,0.4)] backdrop-blur-md transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_22px_50px_-24px_rgba(63,90,56,0.28)];
+    @apply overflow-hidden rounded-3xl border border-white/70 bg-white/90 shadow-[0_16px_44px_-28px_rgba(28,36,44,0.4)] backdrop-blur-md transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_22px_50px_-24px_rgba(63,90,56,0.28)];
   }
 
   .page-header {
-    @apply glass-panel-soft mb-8 p-6 sm:p-8;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    border-radius: 1.75rem;
+    background: rgba(255, 255, 255, 0.82);
+    border: 1px solid rgba(232, 239, 228, 0.95);
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.6) inset,
+      0 12px 40px -24px rgba(28, 36, 44, 0.28);
+    backdrop-filter: blur(14px) saturate(1.1);
+    -webkit-backdrop-filter: blur(14px) saturate(1.1);
+  }
+
+  @media (min-width: 640px) {
+    .page-header {
+      padding: 2rem;
+    }
   }
 
   .page-header .eyebrow {
