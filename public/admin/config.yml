@@ -64,6 +64,7 @@ collections:
           - { name: author, label: Author name, widget: string }
           - { name: authorBio, label: Author bio, widget: text }
           - { name: authorNote, label: Author note, widget: string, required: false }
+          - { name: authorImage, label: Author image path, widget: string, required: false, hint: "e.g. /media/brand/author.jpg" }
           - name: social
             label: Social links
             widget: object

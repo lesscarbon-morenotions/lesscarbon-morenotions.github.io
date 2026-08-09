@@ -26,6 +26,7 @@ const site = defineCollection({
     author: z.string(),
     authorBio: z.string(),
     authorNote: z.string().optional(),
+    authorImage: z.string().optional(),
     email: z.string().optional(),
     social: z
       .object({

@@ -8,7 +8,7 @@ export async function GET(context: APIContext) {
   const settings = await getEntry('site', 'settings');
 
   return rss({
-    title: settings?.data.title ?? 'Less Carbon, more notions',
+    title: settings?.data.title ?? 'Less Carbon, More Notions',
     description: settings?.data.description ?? '',
     site: context.site!,
     items: posts.map((post) => ({

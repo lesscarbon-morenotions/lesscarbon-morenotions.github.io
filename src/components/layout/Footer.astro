@@ -3,6 +3,7 @@ import { getEntry } from 'astro:content';
 import CloudLogo from '../ui/CloudLogo.astro';
 const settings = await getEntry('site', 'settings');
 const year = new Date().getFullYear();
+const instagram = settings?.data.social?.instagram;
 ---
 
 <footer class="mt-16 border-t border-beluga-200/80 bg-white/55 backdrop-blur-sm">
@@ -11,30 +12,47 @@ const year = new Date().getFullYear();
       <div class="mb-3 flex items-center gap-3">
         <CloudLogo size={36} animated={false} />
         <p class="font-display text-xl font-semibold text-ink">
-          {settings?.data.title ?? 'Less Carbon, more notions'}
+          {settings?.data.title ?? 'Less Carbon, More Notions'}
         </p>
       </div>
       <p class="mt-2 max-w-md text-sm leading-relaxed text-muted">
         {settings?.data.tagline}
       </p>
-      <p class="mt-4 text-sm text-beluga-500">
-        Written by {settings?.data.author ?? 'a rock-pun enthusiast'} · {settings?.data.authorNote}
+      <p class="mt-4 text-sm text-ink">
+        {settings?.data.author}
+      </p>
+      <p class="mt-1 text-sm text-muted">
+        {settings?.data.authorBio} · {settings?.data.authorNote}
       </p>
     </div>
     <div class="flex flex-wrap gap-6 text-sm md:justify-end">
       <div class="space-y-2">
         <p class="font-semibold text-ink">Explore</p>
         <ul class="space-y-1 text-muted">
-          <li><a href="/blog/" class="no-underline hover:text-hydrangea-700">All posts</a></li>
-          <li><a href="/blog/tags/" class="no-underline hover:text-hydrangea-700">Tags</a></li>
-          <li><a href="/about/" class="no-underline hover:text-hydrangea-700">About</a></li>
-          <li><a href="/rss.xml" class="no-underline hover:text-hydrangea-700">RSS</a></li>
+          <li><a href="/blog/" class="no-underline hover:text-moss-700">All posts</a></li>
+          <li><a href="/blog/tags/" class="no-underline hover:text-moss-700">Tags</a></li>
+          <li><a href="/about/" class="no-underline hover:text-moss-700">About</a></li>
+          <li><a href="/rss.xml" class="no-underline hover:text-moss-700">RSS</a></li>
+          {
+            instagram && (
+              <li>
+                <a
+                  href={instagram}
+                  class="no-underline hover:text-moss-700"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Instagram
+                </a>
+              </li>
+            )
+          }
         </ul>
       </div>
       <div class="space-y-2">
         <p class="font-semibold text-ink">Editors</p>
         <ul class="space-y-1 text-muted">
-          <li><a href="/admin/" class="no-underline hover:text-hydrangea-700">CMS panel</a></li>
+          <li><a href="/admin/" class="no-underline hover:text-moss-700">CMS panel</a></li>
           <li><span class="text-beluga-500">Hosted on GitHub Pages</span></li>
         </ul>
       </div>

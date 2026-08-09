@@ -1,9 +1,12 @@
 {
-  "title": "Less Carbon, more notions",
-  "tagline": "Socio-ecological science, slow exploration, eco thoughts",
-  "description": "A calm corner for sustainability, refill culture, and living with a lighter touch on the planet.",
-  "author": "B(r)ecc(i)a/Riebeck(it)e",
-  "authorBio": "Probably frolicking somewhere. Love a rock pun. Writing about refill shops, soft science, and the art of paying attention.",
-  "authorNote": "Willow fields and quiet ideas keep me company while I think.",
-  "social": {}
+  "title": "Less Carbon, More Notions",
+  "tagline": "Socio-ecological Science, Slow Exploration, Eco thoughts, Sustainability 🌍 💚 🐳",
+  "description": "A calm corner for socio-ecological science, slow exploration, and living with a lighter touch on the planet.",
+  "author": "B(r)ecc(i)a/Riebeck(it)e 🔎 🏔️",
+  "authorBio": "Probably frolicking somewhere",
+  "authorNote": "Love a rock pun 🪨",
+  "authorImage": "/media/brand/author.jpg",
+  "social": {
+    "instagram": "https://www.instagram.com/lesscarbon.morenotions/"
+  }
 }
