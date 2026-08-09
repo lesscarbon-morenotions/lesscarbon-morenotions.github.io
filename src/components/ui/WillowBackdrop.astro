@@ -1,0 +1,141 @@
+---
+/**
+ * William Morris–style willow field: dual drifting tiles + soft designer veil.
+ * Pure decoration — hidden from assistive tech.
+ */
+---
+
+<div class="willow-backdrop" aria-hidden="true">
+  <div class="willow-layer willow-layer--a"></div>
+  <div class="willow-layer willow-layer--b"></div>
+  <div class="willow-veil"></div>
+  <div class="willow-glow willow-glow--tl"></div>
+  <div class="willow-glow willow-glow--br"></div>
+</div>
+
+<style>
+  .willow-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+    background-color: #f4f1ea;
+  }
+
+  .willow-layer {
+    position: absolute;
+    /* Oversize so pan animation never shows empty edges */
+    inset: -25%;
+    background-repeat: repeat;
+    will-change: transform;
+  }
+
+  /* Primary Morris willow with cornflower accents */
+  .willow-layer--a {
+    background-image: url('/media/patterns/willow-morris.jpg');
+    background-size: 380px 380px;
+    opacity: 0.22;
+    animation: willow-pan-a 90s linear infinite;
+    filter: saturate(0.92) contrast(0.96);
+  }
+
+  /* Deeper classic willow, reverse drift for parallax depth */
+  .willow-layer--b {
+    background-image: url('/media/patterns/willow-morris-deep.jpg');
+    background-size: 520px 520px;
+    opacity: 0.1;
+    mix-blend-mode: multiply;
+    animation: willow-pan-b 140s linear infinite reverse;
+    filter: saturate(0.85);
+  }
+
+  .willow-veil {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(
+        165deg,
+        rgba(247, 248, 249, 0.72) 0%,
+        rgba(244, 241, 234, 0.55) 40%,
+        rgba(238, 241, 244, 0.7) 100%
+      ),
+      radial-gradient(ellipse 70% 50% at 15% 0%, rgba(183, 166, 217, 0.18), transparent 55%),
+      radial-gradient(ellipse 60% 45% at 100% 10%, rgba(111, 159, 232, 0.14), transparent 50%),
+      radial-gradient(ellipse 50% 40% at 50% 100%, rgba(122, 154, 109, 0.1), transparent 55%);
+  }
+
+  .willow-glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(40px);
+    opacity: 0.45;
+    animation: willow-pulse 12s ease-in-out infinite;
+  }
+
+  .willow-glow--tl {
+    top: -8%;
+    left: -4%;
+    width: min(48vw, 28rem);
+    height: min(48vw, 28rem);
+    background: radial-gradient(circle, rgba(183, 166, 217, 0.45), transparent 70%);
+  }
+
+  .willow-glow--br {
+    right: -6%;
+    bottom: -10%;
+    width: min(52vw, 30rem);
+    height: min(52vw, 30rem);
+    background: radial-gradient(circle, rgba(111, 159, 232, 0.35), transparent 70%);
+    animation-delay: -4s;
+  }
+
+  @keyframes willow-pan-a {
+    0% {
+      transform: translate3d(0, 0, 0) rotate(0.001deg);
+    }
+    100% {
+      transform: translate3d(-190px, -95px, 0) rotate(0.001deg);
+    }
+  }
+
+  @keyframes willow-pan-b {
+    0% {
+      transform: translate3d(0, 0, 0);
+    }
+    100% {
+      transform: translate3d(130px, -160px, 0);
+    }
+  }
+
+  @keyframes willow-pulse {
+    0%,
+    100% {
+      opacity: 0.35;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.55;
+      transform: scale(1.06);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .willow-layer--a,
+    .willow-layer--b,
+    .willow-glow {
+      animation: none !important;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .willow-layer--a {
+      background-size: 280px 280px;
+      opacity: 0.18;
+    }
+    .willow-layer--b {
+      background-size: 360px 360px;
+      opacity: 0.08;
+    }
+  }
+</style>

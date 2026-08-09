@@ -1,15 +1,19 @@
 ---
 import { getEntry } from 'astro:content';
+import CloudLogo from '../ui/CloudLogo.astro';
 const settings = await getEntry('site', 'settings');
 const year = new Date().getFullYear();
 ---
 
-<footer class="mt-16 border-t border-beluga-200/80 bg-white/50">
+<footer class="mt-16 border-t border-beluga-200/80 bg-white/55 backdrop-blur-sm">
   <div class="site-container grid gap-8 py-12 md:grid-cols-[1.4fr_1fr]">
     <div>
-      <p class="font-display text-xl font-semibold text-ink">
-        {settings?.data.title ?? 'Less Carbon, more notions'}
-      </p>
+      <div class="mb-3 flex items-center gap-3">
+        <CloudLogo size={36} animated={false} />
+        <p class="font-display text-xl font-semibold text-ink">
+          {settings?.data.title ?? 'Less Carbon, more notions'}
+        </p>
+      </div>
       <p class="mt-2 max-w-md text-sm leading-relaxed text-muted">
         {settings?.data.tagline}
       </p>

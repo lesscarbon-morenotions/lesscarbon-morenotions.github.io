@@ -1,0 +1,142 @@
+---
+/**
+ * Cloud mark: atmosphere/carbon + thought-bubble notions.
+ */
+interface Props {
+  class?: string;
+  size?: number;
+  animated?: boolean;
+  title?: string;
+}
+
+const {
+  class: className = '',
+  size = 40,
+  animated = true,
+  title = 'Less Carbon, more notions',
+} = Astro.props;
+const uid = `cloud-${Math.random().toString(36).slice(2, 8)}`;
+---
+
+<span
+  class:list={['cloud-logo inline-grid place-items-center', animated && 'cloud-logo--live', className]}
+  style={`width:${size}px;height:${size}px`}
+  role="img"
+  aria-label={title}
+>
+  <svg viewBox="0 0 64 64" width={size} height={size} aria-hidden="true">
+    <defs>
+      <linearGradient id={`${uid}-fill`} x1="10" y1="14" x2="54" y2="50" gradientUnits="userSpaceOnUse">
+        <stop offset="0%" stop-color="#b8d4f5" />
+        <stop offset="40%" stop-color="#6f9fe8" />
+        <stop offset="100%" stop-color="#3d6fbf" />
+      </linearGradient>
+      <radialGradient id={`${uid}-glow`} cx="70%" cy="30%" r="40%">
+        <stop offset="0%" stop-color="#e8dff8" stop-opacity="0.95" />
+        <stop offset="50%" stop-color="#b7a6d9" stop-opacity="0.4" />
+        <stop offset="100%" stop-color="#b7a6d9" stop-opacity="0" />
+      </radialGradient>
+    </defs>
+    <rect width="64" height="64" rx="18" fill="#eef1f4" />
+    <circle class="logo-glow" cx="44" cy="20" r="15" fill={`url(#${uid}-glow)`} />
+    <path
+      class="logo-cloud"
+      fill={`url(#${uid}-fill)`}
+      d="M18.5 42.5c-4.8 0-8.7-3.7-8.7-8.3 0-3.6 2.3-6.7 5.6-7.8C16.2 20.7 20.8 17 26.5 17c4.2 0 7.9 2 10.2 5.1 1.1-.4 2.3-.6 3.5-.6 5.4 0 9.8 4.2 9.8 9.4 0 .4 0 .8-.1 1.2 3.2.9 5.5 3.7 5.5 7.1 0 4.1-3.4 7.4-7.6 7.4H18.5z"
+    />
+    <circle class="logo-dot logo-dot--a" cx="46" cy="48" r="3.2" fill="#3d6fbf" />
+    <circle class="logo-dot logo-dot--b" cx="52.5" cy="54.5" r="2" fill="#4f3f86" />
+    <path
+      class="logo-spark"
+      fill="#f7f8f9"
+      d="M44 15.5l.85 2.15h2.25l-1.8 1.35.7 2.2L44 19.9l-1.95 1.3.7-2.2-1.8-1.35h2.25z"
+    />
+  </svg>
+</span>
+
+<style>
+  .cloud-logo {
+    border-radius: 18px;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.65),
+      0 8px 20px -12px rgba(61, 111, 191, 0.55);
+  }
+
+  .cloud-logo--live .logo-glow {
+    animation: logo-breathe 4.5s ease-in-out infinite;
+    transform-origin: 44px 20px;
+  }
+
+  .cloud-logo--live .logo-spark {
+    animation: logo-twinkle 2.8s ease-in-out infinite;
+    transform-origin: 44px 18px;
+  }
+
+  .cloud-logo--live .logo-cloud {
+    animation: logo-float 6s ease-in-out infinite;
+  }
+
+  .cloud-logo--live .logo-dot--a {
+    animation: logo-rise 3.6s ease-in-out infinite;
+  }
+
+  .cloud-logo--live .logo-dot--b {
+    animation: logo-rise 3.6s ease-in-out infinite 0.35s;
+  }
+
+  @keyframes logo-breathe {
+    0%,
+    100% {
+      opacity: 0.75;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.08);
+    }
+  }
+
+  @keyframes logo-twinkle {
+    0%,
+    100% {
+      opacity: 0.85;
+      transform: scale(1) rotate(0deg);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.15) rotate(12deg);
+    }
+  }
+
+  @keyframes logo-float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-0.6px);
+    }
+  }
+
+  @keyframes logo-rise {
+    0%,
+    100% {
+      opacity: 0.85;
+      transform: translateY(0);
+    }
+    50% {
+      opacity: 1;
+      transform: translateY(-1px);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cloud-logo--live .logo-glow,
+    .cloud-logo--live .logo-spark,
+    .cloud-logo--live .logo-cloud,
+    .cloud-logo--live .logo-dot--a,
+    .cloud-logo--live .logo-dot--b {
+      animation: none !important;
+    }
+  }
+</style>

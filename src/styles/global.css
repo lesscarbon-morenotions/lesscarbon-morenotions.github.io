@@ -56,12 +56,8 @@
   }
 
   body {
-    @apply bg-surface text-ink font-sans antialiased;
-    background-image:
-      radial-gradient(ellipse 80% 50% at 10% -10%, color-mix(in oklab, var(--color-hydrangea-300) 28%, transparent), transparent),
-      radial-gradient(ellipse 60% 40% at 100% 0%, color-mix(in oklab, var(--color-cornflower-400) 18%, transparent), transparent),
-      radial-gradient(ellipse 50% 30% at 50% 100%, color-mix(in oklab, var(--color-moss-400) 10%, transparent), transparent);
-    background-attachment: fixed;
+    /* Willow field is painted by <WillowBackdrop /> (Morris tiles + motion). */
+    @apply bg-transparent text-ink font-sans antialiased;
     min-height: 100vh;
   }
 
