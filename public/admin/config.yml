@@ -7,7 +7,7 @@
 backend:
   name: github
   repo: lesscarbon-morenotions/lesscarbon-morenotions.github.io
-  branch: redesign
+  branch: main
   # No base_url — we do not use Cloudflare Workers or any third-party OAuth proxy.
   # Production browser login with GitHub requires an OAuth bridge; for a pure
   # GitHub Pages handoff we use local_backend (below) instead.
