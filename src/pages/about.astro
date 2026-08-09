@@ -15,7 +15,7 @@ const settings = await getEntry('site', 'settings');
       <div class="card overflow-hidden">
         <img
           src="/media/brand/avatar-beluga.jpg"
-          alt="Soft illustration of a beluga whale"
+          alt="Soft illustrated avatar"
           class="aspect-square w-full object-cover"
           width="480"
           height="480"
@@ -27,28 +27,25 @@ const settings = await getEntry('site', 'settings');
       </div>
 
       <div>
-        <p class="text-xs font-semibold uppercase tracking-[0.16em] text-hydrangea-700">About</p>
+        <p class="text-xs font-semibold uppercase tracking-[0.16em] text-moss-700">About</p>
         <h1 class="mt-2 font-display text-4xl font-semibold text-ink">
           Socio-ecological science & slow exploration
         </h1>
         <div class="prose-nature mt-6 max-w-2xl">
           <p>{settings?.data.authorBio}</p>
           <p>
-            This site is a rebuilt home for notes that used to live in a drafty Notion export.
-            Expect refill-day field notes, reading lists, food adventures, and reminders to live a
-            little more lightly — carbon-wise and attention-wise.
+            This site is a home for notes on living lightly — starting with refill-day field notes
+            and zero-waste shops, with more notions to come.
           </p>
           <p>
-            The visual world leans on nature: beluga soft greys, hydrangea violets, cornflower blues,
-            and butterflies that drift across the pages. It is meant to feel like a meadow you can
-            think in.
+            The design draws on a William Morris willow field and a cloud mark for carbon and ideas:
+            a meadow you can think in.
           </p>
           <h2>What you’ll find</h2>
           <ul>
-            <li>Essays on sustainability and everyday eco practice</li>
-            <li>Mindfulness and positive-thinking reflections</li>
-            <li>Books, hobbies, and culinary wanderings</li>
-            <li>A searchable, taggable archive with a calm reading layout</li>
+            <li>Sustainability and everyday eco practice</li>
+            <li>Refill culture and local loops</li>
+            <li>A calm, searchable reading layout</li>
           </ul>
         </div>
         <div class="mt-8 flex flex-wrap gap-3">
@@ -56,9 +53,10 @@ const settings = await getEntry('site', 'settings');
           <a class="btn-ghost" href="/admin/">CMS panel</a>
         </div>
         <p class="mt-4 text-sm text-muted">
-          This site is published on <strong>GitHub Pages</strong>. Editors manage content with the local CMS
-          (<code class="rounded bg-beluga-100 px-1">npm run dev</code> + <code class="rounded bg-beluga-100 px-1">npx decap-server</code>)
-          or by editing Markdown on GitHub — every push rebuilds Pages.
+          Published on <strong>GitHub Pages</strong>. Editors use the local CMS
+          (<code class="rounded bg-beluga-100 px-1">npm run dev</code> +
+          <code class="rounded bg-beluga-100 px-1">npx decap-server</code>)
+          or edit Markdown on GitHub — every push rebuilds the site.
         </p>
       </div>
     </div>
