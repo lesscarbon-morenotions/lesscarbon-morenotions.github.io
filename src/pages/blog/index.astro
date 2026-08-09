@@ -13,22 +13,31 @@ const tags = collectTags(posts);
   title="Blog"
   description="Posts from Less Carbon, More Notions — sustainability, refill culture, and living lightly."
 >
-  <section class="site-container py-12">
-    <header class="mb-8 max-w-2xl">
-      <p class="text-xs font-semibold uppercase tracking-[0.16em] text-moss-700">Archive</p>
-      <h1 class="mt-2 font-display text-4xl font-semibold text-ink">All notions</h1>
-      <p class="mt-3 text-muted">
-        Essays and Instagram field notes — filter by tag, search from the header, or open any card.
-        Posts marked with the Instagram badge were imported from
-        <a href="https://www.instagram.com/lesscarbon.morenotions/" target="_blank" rel="noopener noreferrer">@lesscarbon.morenotions</a>.
+  <section class="site-container py-12 sm:py-14">
+    <header class="page-header">
+      <p class="eyebrow">Archive</p>
+      <h1>All notions</h1>
+      <p class="lede">
+        Essays and Instagram field notes. Filter by tag, search from the header, or open any card.
+        The Instagram badge marks notes imported from
+        <a
+          href="https://www.instagram.com/lesscarbon.morenotions/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="font-medium text-ink"
+        >@lesscarbon.morenotions</a>.
       </p>
     </header>
 
-    <div class="mb-8">
+    <div class="glass-panel-soft mb-8 p-4 sm:p-5">
       <TagFilter client:load tags={tags} />
     </div>
 
-    <p id="filter-empty" class="mb-6 hidden rounded-2xl border border-beluga-200 bg-white/70 px-4 py-3 text-sm text-muted" hidden>
+    <p
+      id="filter-empty"
+      class="mb-6 rounded-2xl border border-beluga-200 bg-white/90 px-4 py-3 text-sm text-muted shadow-sm"
+      hidden
+    >
       No posts match those tags. Try clearing a filter.
     </p>
 

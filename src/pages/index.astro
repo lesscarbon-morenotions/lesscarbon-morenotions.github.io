@@ -18,17 +18,18 @@ const instagram = settings?.data.social?.instagram ?? 'https://www.instagram.com
   <Hero />
 
   <section class="site-container">
-    <div class="card grid gap-6 p-6 md:grid-cols-[1fr_auto] md:items-center md:p-8">
+    <div class="glass-panel grid gap-6 p-6 md:grid-cols-[1fr_auto] md:items-center md:p-8">
       <div>
-        <h2 class="font-display text-2xl font-semibold text-ink">A quieter kind of progress</h2>
-        <p class="mt-2 max-w-2xl text-muted">
-          Starting with refill day field notes — zero-waste shops, local loops, and the joy of
-          buying less packaging. More Notions will grow here over time.
+        <h2 class="font-display text-2xl font-semibold tracking-tight text-ink">A quieter kind of progress</h2>
+        <p class="mt-2 max-w-2xl leading-relaxed text-muted">
+          Refill-day field notes, wildflower meadows, and slow travel — the small practices that
+          lighten our footprint. More Notions will grow here over time.
         </p>
       </div>
       <div class="flex flex-wrap gap-2">
         <a class="tag-pill" href="/blog/tags/sustainability/">Sustainability</a>
-        <a class="tag-pill" href="/blog/tags/lifestyle/">Lifestyle</a>
+        <a class="tag-pill" href="/blog/tags/nature/">Nature</a>
+        <a class="tag-pill" href="/blog/tags/travel/">Travel</a>
       </div>
     </div>
   </section>
@@ -36,13 +37,13 @@ const instagram = settings?.data.social?.instagram ?? 'https://www.instagram.com
   <FeaturedPosts />
 
   <section class="site-container pb-16">
-    <div class="relative overflow-hidden rounded-[2rem] border border-beluga-200 bg-white/70 p-8 md:p-12 backdrop-blur-sm">
-      <div class="relative z-10 max-w-xl">
+    <div class="glass-panel relative overflow-hidden p-8 md:p-12">
+      <div class="relative z-10 max-w-xl pr-0 md:pr-40">
         <p class="text-xs font-semibold uppercase tracking-[0.16em] text-moss-700">Author</p>
-        <h2 class="mt-2 font-display text-3xl font-semibold text-ink">
+        <h2 class="mt-2 font-display text-3xl font-semibold tracking-tight text-ink">
           {settings?.data.author}
         </h2>
-        <p class="mt-3 text-muted">{settings?.data.tagline}</p>
+        <p class="mt-3 leading-relaxed text-muted">{settings?.data.tagline}</p>
         <p class="mt-2 text-ink">{settings?.data.authorBio}</p>
         <p class="mt-1 text-muted">{settings?.data.authorNote}</p>
         <div class="mt-6 flex flex-wrap gap-3">
@@ -53,9 +54,9 @@ const instagram = settings?.data.social?.instagram ?? 'https://www.instagram.com
       <img
         src={authorImage}
         alt={settings?.data.author ?? 'Author'}
-        class="pointer-events-none absolute -right-2 -bottom-4 h-44 w-44 rounded-full object-cover shadow-xl ring-4 ring-white/80 md:right-8 md:bottom-8 md:h-52 md:w-52"
-        width="208"
-        height="208"
+        class="pointer-events-none absolute -right-2 bottom-4 h-36 w-36 rounded-full object-cover shadow-xl ring-4 ring-white/90 md:right-8 md:bottom-8 md:h-48 md:w-48"
+        width="192"
+        height="192"
         loading="lazy"
       />
     </div>

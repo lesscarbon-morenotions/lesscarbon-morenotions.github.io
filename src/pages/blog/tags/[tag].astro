@@ -2,7 +2,7 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import PostCard from '../../../components/blog/PostCard.astro';
 import { getPublishedPosts } from '../../../utils/posts';
-import { collectTags, postsWithTag, slugifyTag } from '../../../utils/tags';
+import { collectTags, postsWithTag } from '../../../utils/tags';
 
 export async function getStaticPaths() {
   const posts = await getPublishedPosts();
@@ -17,13 +17,13 @@ const { tag, posts } = Astro.props;
 ---
 
 <BaseLayout title={`Tag: ${tag.label}`} description={`Posts tagged ${tag.label}.`}>
-  <section class="site-container py-12">
-    <header class="mb-8">
-      <p class="text-xs font-semibold uppercase tracking-[0.16em] text-hydrangea-700">Tag</p>
-      <h1 class="mt-2 font-display text-4xl font-semibold text-ink">{tag.label}</h1>
-      <p class="mt-2 text-muted">
+  <section class="site-container py-12 sm:py-14">
+    <header class="page-header">
+      <p class="eyebrow">Tag</p>
+      <h1>{tag.label}</h1>
+      <p class="lede">
         {posts.length} post{posts.length === 1 ? '' : 's'} ·
-        <a href="/blog/tags/" class="text-accent">All tags</a>
+        <a href="/blog/tags/" class="font-medium text-ink">All tags</a>
       </p>
     </header>
     <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

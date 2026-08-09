@@ -7,46 +7,39 @@ const year = new Date().getFullYear();
 const instagram = settings?.data.social?.instagram ?? 'https://www.instagram.com/lesscarbon.morenotions/';
 ---
 
-<footer class="mt-16 border-t border-beluga-200/80 bg-white/55 backdrop-blur-sm">
-  <div class="site-container grid gap-8 py-12 md:grid-cols-[1.4fr_1fr]">
-    <div>
-      <div class="mb-3 flex items-center gap-3">
-        <CloudLogo size={36} animated={false} />
-        <p class="font-display text-xl font-semibold text-ink">
-          {settings?.data.title ?? 'Less Carbon, More Notions'}
+<footer class="mt-20 border-t border-white/50">
+  <div class="glass-soft">
+    <div class="site-container grid gap-10 py-12 md:grid-cols-[1.5fr_1fr] md:items-start">
+      <div>
+        <div class="mb-3 flex items-center gap-3">
+          <CloudLogo size={36} animated={false} />
+          <p class="font-display text-xl font-semibold text-ink">
+            {settings?.data.title ?? 'Less Carbon, More Notions'}
+          </p>
+        </div>
+        <p class="mt-2 max-w-md text-sm leading-relaxed text-muted">
+          {settings?.data.tagline}
+        </p>
+        <p class="mt-4 text-sm font-medium text-ink">
+          {settings?.data.author}
+        </p>
+        <p class="mt-1 text-sm text-muted">
+          {settings?.data.authorBio} · {settings?.data.authorNote}
         </p>
       </div>
-      <p class="mt-2 max-w-md text-sm leading-relaxed text-muted">
-        {settings?.data.tagline}
-      </p>
-      <p class="mt-4 text-sm text-ink">
-        {settings?.data.author}
-      </p>
-      <p class="mt-1 text-sm text-muted">
-        {settings?.data.authorBio} · {settings?.data.authorNote}
-      </p>
-    </div>
-    <div class="flex flex-wrap gap-6 text-sm md:justify-end">
-      <div class="space-y-2">
-        <p class="font-semibold text-ink">Explore</p>
-        <ul class="space-y-1 text-muted">
-          <li><a href="/blog/" class="no-underline hover:text-moss-700">All posts</a></li>
+      <div class="md:justify-self-end">
+        <p class="mb-3 text-xs font-semibold uppercase tracking-[0.14em] text-moss-700">Explore</p>
+        <ul class="flex flex-col gap-2 text-sm text-muted sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-5 sm:gap-y-2">
+          <li><a href="/blog/" class="no-underline hover:text-moss-700">Blog</a></li>
           <li><a href="/blog/tags/" class="no-underline hover:text-moss-700">Tags</a></li>
           <li><a href="/about/" class="no-underline hover:text-moss-700">About</a></li>
           <li><a href="/rss.xml" class="no-underline hover:text-moss-700">RSS</a></li>
-          <li class="pt-1"><InstagramLink href={instagram} /></li>
-        </ul>
-      </div>
-      <div class="space-y-2">
-        <p class="font-semibold text-ink">Editors</p>
-        <ul class="space-y-1 text-muted">
-          <li><a href="/admin/" class="no-underline hover:text-moss-700">CMS panel</a></li>
-          <li><span class="text-beluga-500">Hosted on GitHub Pages</span></li>
+          <li class="sm:pt-0"><InstagramLink href={instagram} /></li>
         </ul>
       </div>
     </div>
-  </div>
-  <div class="border-t border-beluga-200/60 py-4 text-center text-xs text-beluga-500">
-    © {year} {settings?.data.title}. Soft science, lighter living.
+    <div class="border-t border-beluga-200/50 py-4 text-center text-xs text-beluga-500">
+      © {year} {settings?.data.title}
+    </div>
   </div>
 </footer>

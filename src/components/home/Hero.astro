@@ -5,13 +5,13 @@ import NatureScene from './NatureScene.astro';
 ---
 
 <section class="relative overflow-hidden">
-  <div class="site-container grid items-center gap-10 py-14 lg:grid-cols-[1.05fr_0.95fr] lg:py-20">
-    <div class="relative z-10">
-      <p class="mb-3 inline-flex items-center gap-2 rounded-full border border-moss-700/20 bg-white/75 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-moss-700">
+  <div class="site-container grid items-center gap-10 py-12 lg:grid-cols-[1.05fr_0.95fr] lg:py-16">
+    <div class="glass-panel relative z-10 p-7 sm:p-9">
+      <p class="mb-3 inline-flex items-center gap-2 rounded-full border border-moss-700/15 bg-moss-700/8 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-moss-700">
         <span class="h-1.5 w-1.5 rounded-full bg-moss-400"></span>
         Sustainability · Slow living
       </p>
-      <h1 class="font-display text-4xl font-semibold leading-[1.1] tracking-tight text-ink sm:text-5xl lg:text-6xl">
+      <h1 class="font-display text-4xl font-semibold leading-[1.08] tracking-tight text-ink sm:text-5xl lg:text-[3.4rem]">
         Less Carbon,
         <span class="block bg-gradient-to-r from-moss-700 via-cornflower-600 to-hydrangea-500 bg-clip-text text-transparent">
           More Notions
@@ -28,8 +28,8 @@ import NatureScene from './NatureScene.astro';
     </div>
 
     <div class="relative">
-      <div class="hero-gradient-mesh absolute -inset-6 -z-10 rounded-[2.5rem] opacity-70 blur-2xl"></div>
-      <div class="card relative aspect-[4/3] overflow-hidden">
+      <div class="hero-gradient-mesh absolute -inset-6 -z-10 rounded-[2.5rem] opacity-60 blur-2xl"></div>
+      <div class="card relative aspect-[4/3] overflow-hidden ring-1 ring-white/60">
         <Image
           src={heroImg}
           alt="A calm nature scene with soft blues and floating blooms"

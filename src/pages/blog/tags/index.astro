@@ -8,11 +8,11 @@ const tags = collectTags(posts);
 ---
 
 <BaseLayout title="Tags" description="Browse posts by tag.">
-  <section class="site-container py-12">
-    <header class="mb-8 max-w-2xl">
-      <p class="text-xs font-semibold uppercase tracking-[0.16em] text-hydrangea-700">Taxonomy</p>
-      <h1 class="mt-2 font-display text-4xl font-semibold text-ink">Tags</h1>
-      <p class="mt-3 text-muted">Wander by theme — sustainability, books, mindfulness, and more.</p>
+  <section class="site-container py-12 sm:py-14">
+    <header class="page-header">
+      <p class="eyebrow">Taxonomy</p>
+      <h1>Tags</h1>
+      <p class="lede">Wander by theme — sustainability, nature, travel, and more.</p>
     </header>
     <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {
@@ -20,10 +20,10 @@ const tags = collectTags(posts);
           <li>
             <a
               href={`/blog/tags/${tag.slug}/`}
-              class="card flex items-center justify-between p-5 no-underline transition hover:border-hydrangea-300"
+              class="card flex items-center justify-between p-5 no-underline transition hover:border-moss-400/30"
             >
               <span class="font-display text-lg font-semibold text-ink">{tag.label}</span>
-              <span class="rounded-full bg-hydrangea-200/80 px-3 py-1 text-xs font-semibold text-hydrangea-700">
+              <span class="rounded-full bg-moss-700/10 px-3 py-1 text-xs font-semibold text-moss-700">
                 {tag.count}
               </span>
             </a>

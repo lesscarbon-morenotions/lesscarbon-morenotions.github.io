@@ -56,7 +56,6 @@
   }
 
   body {
-    /* Willow field is painted by <WillowBackdrop /> (Morris tiles + motion). */
     @apply bg-transparent text-ink font-sans antialiased;
     min-height: 100vh;
   }
@@ -71,7 +70,7 @@
   }
 
   a:hover {
-    @apply text-hydrangea-700;
+    @apply text-moss-700;
   }
 
   :focus-visible {
@@ -89,24 +88,69 @@
     @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8;
   }
 
+  /* Frosted glass surfaces — keep willow visible but text legible */
+  .glass {
+    background: rgba(255, 255, 255, 0.82);
+    border: 1px solid rgba(255, 255, 255, 0.65);
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.7) inset,
+      0 18px 50px -28px rgba(28, 36, 44, 0.35);
+    backdrop-filter: blur(18px) saturate(1.15);
+    -webkit-backdrop-filter: blur(18px) saturate(1.15);
+  }
+
+  .glass-soft {
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid rgba(232, 239, 228, 0.9);
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.55) inset,
+      0 12px 40px -24px rgba(28, 36, 44, 0.28);
+    backdrop-filter: blur(14px) saturate(1.1);
+    -webkit-backdrop-filter: blur(14px) saturate(1.1);
+  }
+
+  .glass-panel {
+    @apply glass rounded-[1.75rem];
+  }
+
+  .glass-panel-soft {
+    @apply glass-soft rounded-[1.75rem];
+  }
+
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-full bg-cornflower-600 px-5 py-2.5 text-sm font-semibold text-white no-underline shadow-sm transition hover:bg-cornflower-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hydrangea-700;
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-moss-700 px-5 py-2.5 text-sm font-semibold text-white no-underline shadow-sm transition hover:bg-[#334a2e] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hydrangea-700;
   }
 
   .btn-ghost {
-    @apply inline-flex items-center justify-center gap-2 rounded-full border border-beluga-200 bg-white/70 px-5 py-2.5 text-sm font-semibold text-ink no-underline backdrop-blur transition hover:border-hydrangea-300 hover:bg-white;
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-beluga-200/90 bg-white/85 px-5 py-2.5 text-sm font-semibold text-ink no-underline shadow-sm backdrop-blur transition hover:border-moss-400/40 hover:bg-white;
   }
 
   .tag-pill {
-    @apply inline-flex items-center rounded-full bg-hydrangea-200/80 px-3 py-1 text-xs font-semibold tracking-wide text-hydrangea-700 no-underline transition hover:bg-hydrangea-300;
+    @apply inline-flex items-center rounded-full bg-moss-700/10 px-3 py-1 text-xs font-semibold tracking-wide text-moss-700 no-underline transition hover:bg-moss-700/18;
   }
 
   .card {
-    @apply overflow-hidden rounded-3xl border border-beluga-200/80 bg-white/75 shadow-[0_12px_40px_-24px_rgba(28,36,44,0.45)] backdrop-blur-sm transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_20px_50px_-24px_rgba(79,63,134,0.35)];
+    @apply overflow-hidden rounded-3xl border border-white/70 bg-white/88 shadow-[0_16px_44px_-28px_rgba(28,36,44,0.4)] backdrop-blur-md transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_22px_50px_-24px_rgba(63,90,56,0.28)];
+  }
+
+  .page-header {
+    @apply glass-panel-soft mb-8 p-6 sm:p-8;
+  }
+
+  .page-header .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.16em] text-moss-700;
+  }
+
+  .page-header h1 {
+    @apply mt-2 font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl;
+  }
+
+  .page-header .lede {
+    @apply mt-3 max-w-2xl text-[1.05rem] leading-relaxed text-muted;
   }
 
   .prose-nature {
-    @apply max-w-none text-beluga-700 leading-relaxed;
+    @apply max-w-none text-[1.05rem] leading-[1.8] text-beluga-700;
   }
 
   .prose-nature h2 {
@@ -122,7 +166,7 @@
   }
 
   .prose-nature a {
-    @apply text-cornflower-600 underline decoration-cornflower-300 underline-offset-3 hover:text-hydrangea-700;
+    @apply text-cornflower-600 underline decoration-cornflower-300 underline-offset-3 hover:text-moss-700;
   }
 
   .prose-nature ul {
@@ -134,11 +178,15 @@
   }
 
   .prose-nature blockquote {
-    @apply my-6 border-l-4 border-hydrangea-300 pl-4 italic text-beluga-700;
+    @apply my-6 border-l-4 border-moss-400/50 pl-4 italic text-beluga-700;
   }
 
   .prose-nature strong {
     @apply font-semibold text-ink;
+  }
+
+  .prose-nature hr {
+    @apply my-10 border-beluga-200/80;
   }
 }
 
@@ -179,9 +227,9 @@
 .hero-gradient-mesh {
   background:
     linear-gradient(120deg,
-      color-mix(in oklab, var(--color-hydrangea-300) 40%, transparent),
-      color-mix(in oklab, var(--color-cornflower-400) 35%, transparent),
-      color-mix(in oklab, var(--color-beluga-100) 60%, transparent));
+      color-mix(in oklab, var(--color-moss-400) 28%, transparent),
+      color-mix(in oklab, var(--color-hydrangea-300) 30%, transparent),
+      color-mix(in oklab, var(--color-beluga-100) 55%, transparent));
   background-size: 200% 200%;
   animation: shimmer-wave 14s ease infinite alternate;
 }
