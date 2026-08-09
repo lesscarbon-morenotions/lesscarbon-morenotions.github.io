@@ -1,10 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import InstagramLink from '../components/ui/InstagramLink.astro';
 import { getEntry } from 'astro:content';
 
 const settings = await getEntry('site', 'settings');
 const authorImage = settings?.data.authorImage ?? '/media/brand/author.jpg';
-const instagram = settings?.data.social?.instagram;
+const instagram = settings?.data.social?.instagram ?? 'https://www.instagram.com/lesscarbon.morenotions/';
 ---
 
 <BaseLayout
@@ -31,18 +32,9 @@ const instagram = settings?.data.social?.instagram;
           </p>
           <p class="text-sm text-ink">{settings?.data.authorBio}</p>
           <p class="text-sm text-muted">{settings?.data.authorNote}</p>
-          {
-            instagram && (
-              <a
-                href={instagram}
-                class="btn-ghost mt-3 !px-4 !py-2 text-sm"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Instagram
-              </a>
-            )
-          }
+          <div class="mt-3">
+            <InstagramLink href={instagram} />
+          </div>
         </div>
       </div>
 
@@ -68,13 +60,7 @@ const instagram = settings?.data.social?.instagram;
         </div>
         <div class="mt-8 flex flex-wrap gap-3">
           <a class="btn-primary" href="/blog/">Browse posts</a>
-          {
-            instagram && (
-              <a class="btn-ghost" href={instagram} target="_blank" rel="noopener noreferrer">
-                Instagram
-              </a>
-            )
-          }
+          <InstagramLink href={instagram} />
           <a class="btn-ghost" href="/admin/">CMS panel</a>
         </div>
         <p class="mt-4 text-sm text-muted">

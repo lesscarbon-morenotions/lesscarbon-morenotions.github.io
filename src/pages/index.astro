@@ -2,11 +2,12 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/home/Hero.astro';
 import FeaturedPosts from '../components/home/FeaturedPosts.astro';
+import InstagramLink from '../components/ui/InstagramLink.astro';
 import { getEntry } from 'astro:content';
 
 const settings = await getEntry('site', 'settings');
 const authorImage = settings?.data.authorImage ?? '/media/brand/author.jpg';
-const instagram = settings?.data.social?.instagram;
+const instagram = settings?.data.social?.instagram ?? 'https://www.instagram.com/lesscarbon.morenotions/';
 ---
 
 <BaseLayout
@@ -46,13 +47,7 @@ const instagram = settings?.data.social?.instagram;
         <p class="mt-1 text-muted">{settings?.data.authorNote}</p>
         <div class="mt-6 flex flex-wrap gap-3">
           <a href="/about/" class="btn-primary">About</a>
-          {
-            instagram && (
-              <a class="btn-ghost" href={instagram} target="_blank" rel="noopener noreferrer">
-                Instagram
-              </a>
-            )
-          }
+          <InstagramLink href={instagram} />
         </div>
       </div>
       <img

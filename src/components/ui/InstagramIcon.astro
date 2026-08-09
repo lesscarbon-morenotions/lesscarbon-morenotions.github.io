@@ -1,0 +1,31 @@
+---
+/**
+ * Official-style Instagram glyph in brand-friendly gradient.
+ * Not a Meta trademark lockup — simple camera glyph for link buttons.
+ */
+interface Props {
+  class?: string;
+  size?: number;
+  label?: string;
+}
+
+const { class: className = '', size = 20, label = 'Instagram' } = Astro.props;
+const uid = `ig-${Math.random().toString(36).slice(2, 8)}`;
+---
+
+<span class:list={['ig-icon inline-flex items-center justify-center', className]} style={`width:${size}px;height:${size}px`} role="img" aria-label={label}>
+  <svg viewBox="0 0 24 24" width={size} height={size} aria-hidden="true">
+    <defs>
+      <linearGradient id={`${uid}-g`} x1="0%" y1="100%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#f58529" />
+        <stop offset="30%" stop-color="#dd2a7b" />
+        <stop offset="60%" stop-color="#8134af" />
+        <stop offset="100%" stop-color="#515bd4" />
+      </linearGradient>
+    </defs>
+    <rect x="2" y="2" width="20" height="20" rx="6" fill={`url(#${uid}-g)`} />
+    <circle cx="12" cy="12" r="4.2" fill="none" stroke="#fff" stroke-width="1.7" />
+    <circle cx="17.2" cy="6.8" r="1.15" fill="#fff" />
+    <rect x="5.2" y="5.2" width="13.6" height="13.6" rx="4.2" fill="none" stroke="#fff" stroke-width="1.5" opacity="0.95" />
+  </svg>
+</span>

@@ -4,6 +4,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { formatDate } from '../../utils/dates';
 import { readingTime } from '../../utils/posts';
 import { slugifyTag } from '../../utils/tags';
+import InstagramLink from '../../components/ui/InstagramLink.astro';
+import InstagramIcon from '../../components/ui/InstagramIcon.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('posts', ({ data }) => !data.draft);
@@ -16,6 +18,8 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { Content } = await render(post);
 const cover = post.data.cover ?? '/media/brand/og-default.jpg';
+const fromIg = post.data.source === 'instagram';
+const sourceUrl = post.data.sourceUrl;
 ---
 
 <BaseLayout
@@ -42,12 +46,23 @@ const cover = post.data.cover ?? '/media/brand/og-default.jpg';
             <time datetime={post.data.pubDate.toISOString()}>{formatDate(post.data.pubDate)}</time>
             <span aria-hidden="true">·</span>
             <span>{readingTime(post.body)}</span>
+            {
+              fromIg && (
+                <>
+                  <span aria-hidden="true">·</span>
+                  <span class="inline-flex items-center gap-1.5 font-medium text-ink">
+                    <InstagramIcon size={14} />
+                    From Instagram
+                  </span>
+                </>
+              )
+            }
           </div>
           <h1 class="mt-3 font-display text-3xl font-semibold leading-tight text-ink sm:text-4xl" data-pagefind-meta="title">
             {post.data.title}
           </h1>
           <p class="mt-3 text-lg text-muted">{post.data.description}</p>
-          <div class="mt-5 flex flex-wrap gap-2">
+          <div class="mt-5 flex flex-wrap items-center gap-2">
             {
               post.data.tags.map((tag) => (
                 <a class="tag-pill" href={`/blog/tags/${slugifyTag(tag)}/`}>
@@ -55,6 +70,7 @@ const cover = post.data.cover ?? '/media/brand/og-default.jpg';
                 </a>
               ))
             }
+            {sourceUrl && <InstagramLink href={sourceUrl} class="!py-1" />}
           </div>
         </div>
       </div>
@@ -65,9 +81,11 @@ const cover = post.data.cover ?? '/media/brand/og-default.jpg';
         <Content />
       </div>
 
-      <nav class="mx-auto mt-14 max-w-2xl border-t border-beluga-200 pt-8" aria-label="Post navigation">
+      <nav class="mx-auto mt-14 flex max-w-2xl flex-wrap items-center gap-3 border-t border-beluga-200 pt-8" aria-label="Post navigation">
         <a href="/blog/" class="btn-ghost">← Back to all posts</a>
+        {sourceUrl && <InstagramLink href={sourceUrl} />}
       </nav>
     </div>
   </article>
 </BaseLayout>
+

@@ -13,6 +13,8 @@ const posts = defineCollection({
     coverAlt: z.string().optional(),
     draft: z.boolean().default(false),
     featured: z.boolean().default(false),
+    source: z.enum(['instagram', 'site']).optional(),
+    sourceUrl: z.string().url().optional(),
   }),
 });
 

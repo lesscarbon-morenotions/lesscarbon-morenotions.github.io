@@ -49,6 +49,8 @@ collections:
       - { name: coverAlt, label: Cover alt text, widget: string, required: false }
       - { name: featured, label: Featured, widget: boolean, default: false }
       - { name: draft, label: Draft, widget: boolean, default: false }
+      - { name: source, label: Source, widget: select, options: ["site", "instagram"], required: false }
+      - { name: sourceUrl, label: Source URL, widget: string, required: false, hint: "Instagram post URL if imported" }
       - { name: body, label: Body, widget: markdown }
 
   - name: site

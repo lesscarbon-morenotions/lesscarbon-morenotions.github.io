@@ -1,0 +1,30 @@
+---
+import InstagramIcon from './InstagramIcon.astro';
+
+interface Props {
+  href: string;
+  class?: string;
+  showLabel?: boolean;
+  size?: number;
+}
+
+const {
+  href,
+  class: className = '',
+  showLabel = true,
+  size = 18,
+} = Astro.props;
+---
+
+<a
+  href={href}
+  class:list={[
+    'ig-link inline-flex items-center gap-2 rounded-full border border-beluga-200/80 bg-white/80 px-3 py-1.5 text-sm font-semibold text-ink no-underline shadow-sm transition hover:-translate-y-0.5 hover:border-[#dd2a7b]/40 hover:shadow-md',
+    className,
+  ]}
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <InstagramIcon size={size} />
+  {showLabel && <span>Instagram</span>}
+</a>
